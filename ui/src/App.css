@@ -1,0 +1,42 @@
+/*TODO MAKE THIS DYNAMIC BY USING % INSTEAD OF PX */
+.App {
+    text-align: center;
+}
+
+.App-logo {
+    animation: App-logo-spin infinite 20s linear;
+    height: 40%;
+}
+
+.App-header {
+    background-color: #0000FF;
+    height: 150px;
+    padding: 4%;
+    color: white;
+}
+.App-li{
+    margin-bottom: 4%;
+    margin-top: 5%;
+}
+.App-LITypes{
+    font-size: 1.4em;
+}
+.App-title {
+    font-size: 2.5em;
+}
+
+.App-intro {
+    font-size: 1.8em;
+}
+.App-sub-heading{
+    font-size: 1.5em;
+}
+
+@keyframes App-logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

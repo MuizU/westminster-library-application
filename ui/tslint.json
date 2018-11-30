@@ -1,0 +1,37 @@
+{
+  "extends": [
+    "tslint:recommended",
+    "tslint-react",
+    "tslint-config-prettier"
+  ],
+  "rules": {
+    "member-access": false,
+    "jsx-no-lambda": false,
+    "no-empty": false,
+    "object-literal-sort-keys": false,
+    "member-ordering": false,
+    "no-console": false,
+    "max-classes-per-file": false,
+    "ordered-imports": false,
+    "adjacent-overload-signatures": false,
+    "no-unused-expression": false,
+    "noUnusedLocals": false,
+    "allowShortCircuit": false,
+    "allowTernary": false,
+    "variable-name": [
+      true,
+      "ban-keywords",
+      "check-format",
+      "allow-leading-underscore",
+      "allow-pascal-case",
+      "allow-snake-case"
+    ],
+    "linterOptions": {
+      "exclude": [
+        "config/**/*.js",
+        "node_modules/**/*.ts",
+        "coverage/lcov-report/*.js"
+      ]
+    }
+  }
+}
