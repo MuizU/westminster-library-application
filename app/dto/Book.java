@@ -1,14 +1,23 @@
 package dto;
 
-import DateTime.DateTime;
+import date.DateTime;
 
-import java.util.Collection;
+import java.util.List;
 
 public class Book extends LibraryItem {
-    //the book author is an array because a book can have more than one author
-    private Collection<Author> book_author;
+    //the DVDs author is an array because a DVDs can have more than one author
+    private List<String> book_authors;
     private String publisher;
     private int numPages;
+
+    public Book() {
+
+    }
+
+    public Book(String isbn, String title, String sector, DateTime publication_date, List<String> book_author) {
+        super(isbn, title, sector, publication_date);
+        this.book_authors = book_author;
+    }
 
 
 
@@ -20,11 +29,28 @@ public class Book extends LibraryItem {
         return numPages;
     }
 
-    public Collection<Author> getBook_author() {
-        return book_author;
+    public List<String> getBook_authors() {
+        return book_authors;
     }
 
-    public void setBook_author(Collection<Author> book_author) {
-        this.book_author = book_author;
+    public void setBook_authors(List<String> book_authors) {
+        this.book_authors = book_authors;
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
+    }
+
+    public void setNumPages(int numPages) {
+        this.numPages = numPages;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "book_authors=" + book_authors +
+                ", publisher='" + publisher + '\'' +
+                ", numPages=" + numPages +
+                '}';
     }
 }

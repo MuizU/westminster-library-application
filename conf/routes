@@ -1,14 +1,49 @@
 # Routes
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
+GET         /                       controllers.HomeController.appSummary()
+GET         /api/getBook            controllers.HomeController.getAllBooks()
 
-# Serve index page from public directory
-GET        /                    controllers.HomeController.index()
+GET         /api/getDVD            controllers.HomeController.getAllDVDs()
 
-# An example route (Prefix all API routes with apiPrefix defined in application.conf)
-GET        /api/summary         controllers.HomeController.appSummary
+GET        /api/getReader          controllers.HomeController.getAllReaders()
 
-# Serve static assets under public directory
-#GET        /*file               controllers.FrontendController.assetOrDefault(file)
+GET        /api/getReport           controllers.HomeController.getReport()
 
 GET        /assets/*file        controllers.Assets.versioned(path="/public", file: Asset)
+
+# Serve index page from public directory
+GET        /*file               controllers.FrontendController.assetOrDefault(file)
+
+
+# Adding a DVDs to the Database
++nocsrf
+POST        /api/Book               controllers.HomeController.addBook()
+
++nocsrf
+POST        /api/BorrowBook         controllers.HomeController.borrowBook()
+
++nocsrf
+POST        /api/BorrowDVD         controllers.HomeController.borrowDVD()
+
++nocsrf
+POST      /api/DeleteBook         controllers.HomeController.deleteBook()
+
++nocsrf
+POST      /api/DeleteDVD         controllers.HomeController.deleteDVD()
+
++nocsrf
+POST        /api/returnDVD         controllers.HomeController.returnDVD()
+
++nocsrf
+POST        /api/Reader             controllers.HomeController.addReader()
++nocsrf
+POST        /api/returnBook         controllers.HomeController.returnBook()
++nocsrf
+POST        /api/DVD                controllers.HomeController.addDVD()
+
+
+
+
+
+

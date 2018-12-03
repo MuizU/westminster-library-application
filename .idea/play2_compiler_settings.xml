@@ -2,7 +2,7 @@
 <project version="4">
   <component name="Play2CompilerConfiguration">
     <option name="PLAY_ENABLED" value="true" />
-    <option name="PROJECT_PLAY_MODULE" value="westminster-library-application" />
+    <option name="PROJECT_PLAY_MODULE" value="westminster-library-application-build" />
     <option name="PROJECT_URI" value="" />
   </component>
 </project>

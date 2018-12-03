@@ -1,75 +1,66 @@
 package services;
 
+import date.DateTime;
 import dto.Book;
-import dto.Reader;
-import io.ebean.Ebean;
-import models.AuthorModel;
-import models.BookModel;
-import models.ReaderModel;
+import dto.DVD;
+import firebase.FirebaseInit;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+
 
 public class WestminsterLibraryManager implements LibraryManager {
 
 
     @Override
-    public void addBook(String itemName, String authorName, String readerName) {
-
-        BookModel book = new BookModel();
-
-        book.setTitle(itemName);
-
-        ReaderModel reader = new ReaderModel();
-        reader.setName(readerName);
-
-        Ebean.save(reader);
-
-        AuthorModel author = new AuthorModel();
-        author.setName(authorName);
-
-        Ebean.save(author);
-
-        book.setReader(reader);
-        book.setAuthors(Arrays.asList(author));
-
-        Ebean.save(book);
+    public void addDVD(String isbn, String title, String genre, DateTime publicationDate, String producerName) throws Exception{
+        DVD dvd = new DVD(isbn, title, genre, publicationDate, producerName);
+        FirebaseInit.initialize();
+        FirebaseInit.writeDVD(dvd);
 
     }
 
     @Override
-    public List<Book> getAllBooks() {
-        List<BookModel> bookModels = Ebean.find(BookModel.class).findList();
-
-        List<Book> books = new ArrayList<>();
-
-        for (BookModel bookModel : bookModels) {
-            Book book = getBookDTObyModel(bookModel);
-            books.add(book);
-        }
-
-        return books;
+    public void addBook(String isbn, String bookTitle, String genre, DateTime publicationDate, List<String> authorName, String publisher, int numPages) throws Exception{
+        Book book = new Book(isbn, bookTitle, genre, publicationDate, authorName);
+        book.setBorrowed(false);
+        book.setBorrowed_date(new DateTime());
+        book.setPublisher(publisher);
+        book.setNumPages(numPages);
+        FirebaseInit.initialize();
+        FirebaseInit.writeBook(book);
     }
 
-    private Book getBookDTObyModel(BookModel bookModel) {
-        Book book = new Book();
-        book.setItem_title(bookModel.getTitle());
-        book.setIsbn(bookModel.getIsbn());
-
-        Reader reader = getReaderDTObyModel(bookModel.getReader());
-        book.setCurrent_reader(reader);
-
-        //TODO: write a method to get author list.
-
-        return book;
+    @Override
+    public void deleteBook(String isbn) throws Exception {
+        FirebaseInit.initialize();
+        FirebaseInit.deleteBook(isbn);
+    }
+    @Override
+    public void deleteDVD(String isbn) throws Exception{
+        FirebaseInit.initialize();
+        FirebaseInit.deleteDVD(isbn);
+    }
+    @Override
+    public void borrowBook(String isbn,String reader_id, Map<String, Object> dateBorrowed) throws Exception{
+        FirebaseInit.initialize();
+        FirebaseInit.addBookBorrowDate(dateBorrowed, isbn);
+        FirebaseInit.addReaderToBook(reader_id, isbn);
+    }
+    @Override
+    public void borrowDVD(String isbn, String readerID, Map<String, Object> dateBorrowed)throws Exception{
+        FirebaseInit.initialize();
+        FirebaseInit.addDVDBorrowDate(dateBorrowed, isbn);
+        FirebaseInit.addReaderToDVD(readerID, isbn);
+    }
+    public void returnBook(String isbn , DateTime dateTime) throws  Exception{
+        FirebaseInit.initialize();
+        FirebaseInit.returnBook(isbn, dateTime);
+    }
+    public void returnDVD(String isbn, DateTime dateTime) throws Exception{
+        FirebaseInit.initialize();
+        FirebaseInit.returnDVD(isbn,dateTime);
     }
 
-    private Reader getReaderDTObyModel(ReaderModel readerModel) {
-        Reader reader = new Reader();
-        reader.setReaderName(readerModel.getName());
-        reader.setReaderID(readerModel.getId());
 
-        return reader;
-    }
 }

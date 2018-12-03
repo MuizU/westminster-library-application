@@ -2,15 +2,31 @@ package dto;
 
 public class Reader {
 
-    private int readerID;
+    private String readerID = "w167";
     private String readerName;
+    private String mobileNumber;
+    private String email;
+public Reader(){
 
-    public int getReaderID() {
-        return readerID;
+}
+    public Reader(String readerName, String mobileNumber, String email) {
+        this.readerName = readerName;
+        this.mobileNumber = mobileNumber;
+        this.email = email;
+        readerID =  readerID+this.hashCode();
     }
 
-    public void setReaderID(int readerID) {
-        this.readerID = readerID;
+    public String getMobileNumber() {
+        return mobileNumber;
+    }
+
+    public String getEmail() {
+        return this.email;
+    }
+
+
+    public String getReaderID() {
+        return readerID;
     }
 
     public String getReaderName() {
@@ -19,5 +35,15 @@ public class Reader {
 
     public void setReaderName(String readerName) {
         this.readerName = readerName;
+    }
+
+    @Override
+    public String toString() {
+        return "Reader{" +
+                "readerID='" + readerID + '\'' +
+                ", readerName='" + readerName + '\'' +
+                ", mobileNumber='" + mobileNumber + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }

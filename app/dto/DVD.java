@@ -1,32 +1,38 @@
 package dto;
 
-import DateTime.DateTime;
+import date.DateTime;
 
-public class DVD extends LibraryItem{
+public class DVD extends LibraryItem {
     private String[] subtitles;
-    private Producer producer;
+    private String producer;
     private String[] actors;
     private String[] availableLangs;
 
+    public DVD() {
 
-
-    public void setSubtitles(String[] subtitles) {
-        this.subtitles = subtitles;
     }
 
-    public void setActors(String[] actors) {
+    public DVD(String isbn, String title, String sector, DateTime publication_date, String producer, String[] actors, String[] availableLangs) {
+        super(isbn, title, sector, publication_date);
+        this.producer = producer;
         this.actors = actors;
+        this.availableLangs = availableLangs;
     }
 
-    public void setAvailableLangs(String[] availableLangs) {
-        this.availableLangs = availableLangs;
+    public DVD(String isbn, String item_title, String sector, DateTime publication_date, String producer) {
+        super(isbn, item_title, sector, publication_date);
+        this.producer = producer;
     }
 
     public String[] getSubtitles() {
         return subtitles;
     }
 
-    public Producer getProducer() {
+    public void setSubtitles(String[] subtitles) {
+        this.subtitles = subtitles;
+    }
+
+    public String getProducer() {
         return producer;
     }
 
@@ -34,7 +40,15 @@ public class DVD extends LibraryItem{
         return actors;
     }
 
+    public void setActors(String[] actors) {
+        this.actors = actors;
+    }
+
     public String[] getAvailableLangs() {
         return availableLangs;
+    }
+
+    public void setAvailableLangs(String[] availableLangs) {
+        this.availableLangs = availableLangs;
     }
 }

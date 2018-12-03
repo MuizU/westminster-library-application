@@ -6,8 +6,8 @@
         <entry key="root">
           <value>
             <ProjectSettingsEntry>
-              <option name="sourceDir" value="C:\Users\muizu\Documents\IIT\OOP\CWK 1\westminster-library-application\app" />
-              <option name="confDir" value="C:\Users\muizu\Documents\IIT\OOP\CWK 1\westminster-library-application\app" />
+              <option name="sourceDir" value="C:\Users\muizu\Desktop\westminster-library-application\app" />
+              <option name="confDir" value="C:\Users\muizu\Desktop\westminster-library-application\app" />
               <option name="templateImports">
                 <list>
                   <option value="_root_.play.twirl.api.TwirlFeatureImports._" />
@@ -38,14 +38,14 @@
                   <option value="play.libs.F" />
                 </list>
               </option>
-              <option name="uri" value="/C:/Users/muizu/Documents/IIT/OOP/CWK%201/westminster-library-application" />
+              <option name="uri" value="/C:/Users/muizu/Desktop/westminster-library-application" />
             </ProjectSettingsEntry>
           </value>
         </entry>
         <entry key="westminster-library-application">
           <value>
             <ProjectSettingsEntry>
-              <option name="playDistrPath" value="$USER_HOME$/.ivy2/cache/com.typesafe.play/play_2.12/jars/play_2.12-2.6.20.jar" />
+              <option name="playDistrPath" value="$USER_HOME$/.ivy2/cache/com.typesafe.play/play_2.12/jars/play_2.12-2.6.13.jar" />
             </ProjectSettingsEntry>
           </value>
         </entry>

@@ -1,16 +1,14 @@
 name := """westminster-library-application"""
-organization := "com.westminster.w1673601"
 
 version := "1.0-SNAPSHOT"
 
-lazy val root = (project in file(".")).enablePlugins(PlayJava)
+lazy val root = (project in file(".")).enablePlugins(PlayJava).settings(
+  watchSources ++= (baseDirectory.value / "public/ui" ** "*").get
+)
 
-scalaVersion := "2.12.6"
+scalaVersion := "2.12.2"
 
 libraryDependencies += guice
-libraryDependencies ++= Seq(
-  javaJdbc,
-  ehcache,
-  javaWs,
-  evolutions
-)
+
+libraryDependencies += "com.google.firebase" % "firebase-admin" % "6.5.0"
+

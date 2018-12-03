@@ -1,39 +1,17 @@
 import {LibraryItem} from "./LibraryItem";
 
 class DVD extends LibraryItem {
-    private static _count: number;
     private _director: string;
     private _genre: string;
     private _borrowedDate: Date;
     private _borrowed: boolean;
     private _borrowerName:string;
-    private _returnedDate:Date
+    private _returnedDate:Date;
 
-    public constructor(isbn: number, title: string, director: string, genre: string,borrowerName:string, dateBorrowed: Date,dateReturned:Date, borrowed: boolean) {
-        super(isbn, title);
-        this._director = director;
-        this._genre = genre;
-        this._borrowedDate = dateBorrowed;
-        this._borrowed = borrowed;
-        this._borrowerName = borrowerName;
-        this._returnedDate=dateReturned;
-    }
 
-    public getGenre(): string {
-        return this._genre;
-    }
 
-    get borrowerName(): string {
-        return this._borrowerName;
-    }
 
-    set borrowerName(value: string) {
-        this._borrowerName = value;
-    }
 
-    public static get count(): number {
-        return this._count;
-    }
 
 
     get returnedDate(): Date {
@@ -44,9 +22,7 @@ class DVD extends LibraryItem {
         this._returnedDate = value;
     }
 
-    public static set count(value: number) {
-        this._count = value;
-    }
+
 
     public get director(): string {
         return this._director;
@@ -54,6 +30,14 @@ class DVD extends LibraryItem {
 
     public set director(value: string) {
         this._director = value;
+    }
+
+    get borrowerName(): string {
+        return this._borrowerName;
+    }
+
+    set borrowerName(value: string) {
+        this._borrowerName = value;
     }
 
     public get genre(): string {
@@ -64,9 +48,6 @@ class DVD extends LibraryItem {
         this._genre = value;
     }
 
-    public item_type(): string {
-        return "DVD";
-    }
 
     public get borrowed(): boolean {
         return this._borrowed;
